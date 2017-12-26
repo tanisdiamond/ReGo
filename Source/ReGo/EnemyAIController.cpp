@@ -9,10 +9,14 @@
 void AEnemyAIController::OnMoveCompleted(FAIRequestID RequestID, const FPathFollowingResult & Result)
 {
 
-	AEnemyAI* EnemyAI = Cast<AEnemyAI>(GetControlledPawn());
+
+	if (Result.IsFailure())return;
+	AEnemyAI* EnemyAI = Cast<AEnemyAI>(GetPawn());
+	
 
 	if (EnemyAI) {
 	 
+		EnemyAI->CurrentWaypoint++;
 		EnemyAI->MoveToWaypoints();
 	
 	}

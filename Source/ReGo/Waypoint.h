@@ -19,9 +19,11 @@ class REGO_API AWaypoint : public AStaticMeshActor
 public:
 	int GetWaypointOrder();
 
+
 private:
 	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = "true"))
 	int WaypointOrder;
+
 	
 	
 	

@@ -18,7 +18,7 @@ AEnemyAI::AEnemyAI()
 void AEnemyAI::BeginPlay()
 {
 	Super::BeginPlay();
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AWaypoint::StaticClass(), Waypoints);
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), WaypointTag, Waypoints);
 	MoveToWaypoints();
 }
 
@@ -35,6 +35,8 @@ void AEnemyAI::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
+
+
 
 void AEnemyAI::MoveToWaypoints()
 {
@@ -53,7 +55,7 @@ void AEnemyAI::MoveToWaypoints()
 				if (WaypointItr->GetWaypointOrder() == CurrentWaypoint) {
 
 					EnemyAIController->MoveToActor(WaypointItr, 5.f, false);
-					CurrentWaypoint++;
+					
 
 					break;
 				}

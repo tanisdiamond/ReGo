@@ -22,19 +22,22 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Waypoint)
+	int CurrentWaypoint;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Waypoint)
+	FName WaypointTag;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UFUNCTION(BlueprintCallable, Category = MyFunctions)
 	void MoveToWaypoints();
 
 private:
-	UPROPERTY(EditAnywhere , meta = (AllowPrivateAccess = "true"))
-	int CurrentWaypoint;
-
 	TArray<AActor*> Waypoints;
 	
 };
